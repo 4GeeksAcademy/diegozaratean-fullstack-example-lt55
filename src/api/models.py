@@ -17,3 +17,18 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+    
+class Consola(db.Model):
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(120), nullable=False)
+    precio: Mapped[int] = mapped_column(nullable=False)
+
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "precio": self.precio,
+            "rating":5
+            # do not serialize the password, its a security breach
+        }
